@@ -79,7 +79,7 @@ namespace Tyuiu.SpirinAA.Sprint7.Project.V1
                         str = str + dataGridViewTableOrders_SAA.Rows[i].Cells[j].Value;
                     }
                 }
-                File.AppendAllText(path, str + Environment.NewLine);
+                File.AppendAllText(path, str + Environment.NewLine, Encoding.UTF8);
                 str = "";
             }
 
@@ -126,6 +126,145 @@ namespace Tyuiu.SpirinAA.Sprint7.Project.V1
         private void textBoxSearch_SAA_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonMax_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Создаем массив для хранения данных из столбца
+                double[] columnData = new double[dataGridViewTableOrders_SAA.Rows.Count];
+
+                // Используем цикл для записи данных из столбца в массив
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToDouble(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+
+                double res = ds.MaxEnergy(columnData);
+                textBoxResult_SAA.Text = Convert.ToString(res);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то не то!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonFunction_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] columnDataName = new string[dataGridViewTableOrders_SAA.Rows.Count];
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnDataName[i] = Convert.ToString(dataGridViewTableOrders_SAA.Rows[i].Cells[3].Value);
+                }
+
+                double[] columnData = new double[dataGridViewTableOrders_SAA.Rows.Count];
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToDouble(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+                this.chartFunction.Series[0].Points.DataBindXY(columnDataName, columnData);
+            }
+            catch
+            {
+                MessageBox.Show("Что-то пошло не так!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonMin_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Создаем массив для хранения данных из столбца
+                double[] columnData = new double[dataGridViewTableOrders_SAA.Rows.Count];
+
+                // Используем цикл для записи данных из столбца в массив
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToDouble(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+
+                double res = ds.MinEnergy(columnData);
+                textBoxResult_SAA.Text = Convert.ToString(res);
+            }
+            catch
+            {
+                MessageBox.Show("Нееееет, не так надо!" , "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonSumm_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Создаем массив для хранения данных из столбца
+                double[] columnData = new double[dataGridViewTableOrders_SAA.Rows.Count];
+
+                // Используем цикл для записи данных из столбца в массив
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToDouble(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+
+                double res = ds.SummEnergy(columnData);
+                textBoxResult_SAA.Text = Convert.ToString(res);
+            }
+            catch
+            {
+                MessageBox.Show("Нееееет, вообще не так. По другому надо!!!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonMediana_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Создаем массив для хранения данных из столбца
+                double[] columnData = new double[dataGridViewTableOrders_SAA.Rows.Count];
+
+                // Используем цикл для записи данных из столбца в массив
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToDouble(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+
+                double res = ds.AverageValue(columnData);
+                textBoxResult_SAA.Text = Convert.ToString(res);
+            }
+            catch
+            {
+                MessageBox.Show("Давай по новой!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonCount_SAA_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Создаем массив для хранения данных из столбца
+                int[] columnData = new int[dataGridViewTableOrders_SAA.Rows.Count];
+
+                // Используем цикл для записи данных из столбца в массив
+                for (int i = 0; i < dataGridViewTableOrders_SAA.Rows.Count; i++)
+                {
+                    columnData[i] = Convert.ToInt32(dataGridViewTableOrders_SAA.Rows[i].Cells[4].Value);
+                }
+
+                int res = ds.CountDocument(columnData);
+                textBoxResult_SAA.Text = Convert.ToString(res);
+            }
+            catch
+            {
+                MessageBox.Show("Не е е т", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void toolStripMenuItemInstruction_SAA_Click(object sender, EventArgs e)
+        {
+            FormInfo formInfo = new FormInfo();
+            formInfo.Show();
         }
 
         private void dataGridViewTable_SAA_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

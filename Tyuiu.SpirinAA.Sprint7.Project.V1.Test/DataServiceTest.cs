@@ -11,7 +11,6 @@ namespace Tyuiu.SpirinAA.Sprint7.Project.V1.Test
         [TestMethod]
         public void TestMethod1()
         {
-            // Утверждение
             string testFilePath = @"C:\DataSprint7\InPutFileTask7V1.csv";
 
             int lineCount = 0;

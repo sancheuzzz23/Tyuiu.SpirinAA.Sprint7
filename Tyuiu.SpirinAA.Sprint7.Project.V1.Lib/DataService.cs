@@ -28,5 +28,62 @@ namespace Tyuiu.SpirinAA.Sprint7.Project.V1.Lib
             }
             return arrayValues;
         }
+        public double SummEnergy(double[] array)
+        {
+            double res = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                res = res + array[i];
+            }
+            return Math.Round(res, 3);
+        }
+
+        public double MinEnergy(double[] array)
+        {
+            double res = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < res)
+                {
+                    res = array[i];
+                }
+            }
+            return Math.Round(res, 3);
+        }
+
+        public double MaxEnergy(double[] array)
+        {
+            double res = array[0];
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > res)
+                {
+                    res = array[i];
+                }
+            }
+            return Math.Round(res, 3);
+        }
+
+        public double AverageValue(double[] array)
+        {
+            double res = 0;
+            double result = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                res = res + array[i];
+            }
+            result = res / array.Length;
+            return Math.Round(result, 3);
+        }
+
+        public int CountDocument(int[] array)
+        {
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                count++;
+            }
+            return count;
+        }
     }
 }
